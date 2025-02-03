@@ -1,0 +1,1 @@
+/usr/bin/c++ -m64 -g -m64 CMakeFiles/mbss.dir/main.cpp.o -o mbss
