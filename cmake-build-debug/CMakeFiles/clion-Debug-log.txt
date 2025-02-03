@@ -1,4 +1,4 @@
-/opt/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/kopfhanger/cpp_pro/mbss -B /home/kopfhanger/cpp_pro/mbss/cmake-build-debug
+/opt/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -S /home/kopfhanger/cpp_pro/mbss -B /home/kopfhanger/cpp_pro/mbss/cmake-build-debug
 -- The C compiler identification is GNU 14.2.1
 -- The CXX compiler identification is GNU 14.2.1
 -- Detecting C compiler ABI info
@@ -11,6 +11,21 @@
 -- Check for working CXX compiler: /usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Configuring done (0.4s)
--- Generating done (0.0s)
--- Build files have been written to: /home/kopfhanger/cpp_pro/mbss/cmake-build-debug
+CMake Error at CMakeLists.txt:6 (find_package):
+  By not providing "Findtoml11.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "toml11", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "toml11" with any
+  of the following names:
+
+    toml11Config.cmake
+    toml11-config.cmake
+
+  Add the installation prefix of "toml11" to CMAKE_PREFIX_PATH or set
+  "toml11_DIR" to a directory containing one of the above files.  If "toml11"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+
+
+-- Configuring incomplete, errors occurred!
