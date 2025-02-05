@@ -7,7 +7,7 @@
 #define INPUT_HPP
 
 
-#include <map>
+// #include <map>
 #include <string>
 #include <vector>
 #include <eigen3/Eigen/Dense>
@@ -95,25 +95,21 @@ namespace mbss {
         // 解析约束配置
         void parseConstraintsConfig(const auto& config) {
             try {
-                const toml::table& constraints_table = config->at("constraints").as_table();
-
-                for (const auto& [joint_name, joint] : constraints_table) {
+                for (const auto& constraints_table = config->at("constraints").as_table(); const auto& [joint_name, joint] : constraints_table) {
                     JointConfig joint_config;
                     joint_config.type = joint.at("type").as_string();
                     joint_config.body_a = joint.at("body_a").as_string();
                     joint_config.body_b = joint.at("body_b").as_string();
 
                     // 解析锚点
-                    auto anchor_table = joint.at("anchor_point").as_array();
-                    if (anchor_table.size() == 3) {
+                    if (auto anchor_table = joint.at("anchor_point").as_array(); anchor_table.size() == 3) {
                         joint_config.anchor_point(0) = anchor_table[0].as_floating();
                         joint_config.anchor_point(1) = anchor_table[1].as_floating();
                         joint_config.anchor_point(2) = anchor_table[2].as_floating();
                     }
 
                     // 解析轴
-                    auto axis_table = joint.at("axis").as_array();
-                    if (axis_table.size() == 3) {
+                    if (auto axis_table = joint.at("axis").as_array(); axis_table.size() == 3) {
                         joint_config.axis(0) = axis_table[0].as_floating();
                         joint_config.axis(1) = axis_table[1].as_floating();
                         joint_config.axis(2) = axis_table[2].as_floating();

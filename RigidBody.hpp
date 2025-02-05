@@ -22,6 +22,10 @@ class RigidBody {
     Eigen::Vector3d velocity;
     Eigen::Vector3d angularVelocity;
 
+    // Methods to update state
+    void updatePosition(const Eigen::Vector3d& delta);
+    void updateOrientation(const Eigen::Vector3d& delta);
+
 };
 
 } // mbss

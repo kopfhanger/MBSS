@@ -11,6 +11,14 @@ inertia = [1.0, 0.0, 0.0,
 initial_position = [0.0, 1.0, 0.0]
 initial_velocity = [2.0, 0.0, 0.0]
 
+[bodies.body2]
+mass = 2.5
+inertia = [1.0, 0.0, 0.0,
+    0.0, 1.0, 0.0,
+    0.0, 0.0, 1.0]
+initial_position = [0.0, 1.0, 0.0]
+initial_velocity = [2.0, 0.0, 0.0]
+
 [constraints.joint1]
 type = "revolute"
 body_a = "body1"
