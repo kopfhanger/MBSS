@@ -1,4 +1,4 @@
-# Install script for directory: /home/kopfhanger/cpp_pro/mbss
+# Install script for directory: /home/kopfhanger/cpp_code/mbss
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -57,6 +57,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "/home/kopfhanger/cpp_pro/mbss/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/kopfhanger/cpp_code/mbss/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

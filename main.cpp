@@ -15,7 +15,7 @@ std::vector<double> fromEigenMatrix3d(const Eigen::Matrix3d& mat) {
 
 int main() {
   // 示例：解析TOML文件
-  const mbss::InputManager input_manager("/home/kopfhanger/cpp_pro/mbss/system.toml");
+  const mbss::InputManager input_manager("/home/kopfhanger/cpp_code/mbss/system.toml");
 
   // 打印仿真配置
   const auto&[dt, total_time, integrator] = input_manager.getSimulationConfig();
