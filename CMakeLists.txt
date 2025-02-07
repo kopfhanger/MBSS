@@ -7,4 +7,6 @@ add_executable(mbss main.cpp
         input.hpp
         Constraint.hpp
         output.hpp
-        RigidBody.hpp)
+        RigidBody.hpp
+        test/input_test.hpp
+)

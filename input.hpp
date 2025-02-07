@@ -8,6 +8,7 @@
 
 
 // #include <map>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <eigen3/Eigen/Dense>
@@ -50,13 +51,13 @@ namespace mbss {
             parseConstraintsConfig(&config);
         }
         // 获取仿真配置
-        const SimulationConfig& getSimulationConfig() const { return simulation_config_; }
+        [[nodiscard]] const SimulationConfig& getSimulationConfig() const { return simulation_config_; }
 
         // 获取物体配置
-        const std::vector<BodyConfig>& getBodiesConfig() const { return bodies_config_; }
+        [[nodiscard]] const std::vector<BodyConfig>& getBodiesConfig() const { return bodies_config_; }
 
         // 获取约束配置
-        const std::vector<JointConfig>& getConstraintsConfig() const { return constraints_config_; }
+        [[nodiscard]] const std::vector<JointConfig>& getConstraintsConfig() const { return constraints_config_; }
 
     private:
         SimulationConfig simulation_config_;
@@ -118,7 +119,7 @@ namespace mbss {
                     constraints_config_.push_back(joint_config);
                 }
             } catch (const std::exception& e) {
-                std::cerr << "Error parsing constraints: " << e.what() << std::endl;
+                std::cerr << "Error parsing constraints: " << e.what() << "\n";
             }
         }
     };
