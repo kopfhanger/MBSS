@@ -64,24 +64,15 @@ namespace mbss {
 
         // 寻找system.toml文件路径
         static std::string find_system_file() {
-            // 当前路径下的system.toml
+            // 当前路径和上一路径
             fs::path current_path = fs::current_path();
-            fs::path current_file_path = current_path / "system.toml";
 
-            // 检查当前路径下是否存在system.toml
-            if (fs::exists(current_file_path)) {
-                std::cout << "Found system.toml in current directory." << '\n';
-                return current_file_path.string();
-            }
-
-            // 上一路径下的system.toml
-            fs::path parent_path = current_path.parent_path();
-            fs::path parent_file_path = parent_path / "system.toml";
-
-            // 检查上一路径下是否存在system.toml
-            if (fs::exists(parent_file_path)) {
-                std::cout << "Found system.toml in parent directory." << '\n';
-                return parent_file_path.string();
+            // 检查当前路径或上一路径下是否存在的 system.toml
+            for (fs::path parent_path = current_path.parent_path(); const auto& path : {current_path, parent_path}) {
+                if (fs::path file_path = path / "system.toml"; exists(file_path)) {
+                    std::cout << "Found system.toml in " << file_path << '\n';
+                    return file_path.string();
+                }
             }
 
             // 如果都没有找到，提示用户手动输入文件路径
