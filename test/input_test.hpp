@@ -19,7 +19,14 @@ namespace mbss {
         return {vec(0), vec(1), vec(2)};
     }
 
-    inline void test_input(const std::string& system_file) {
+    inline void test_input() {
+
+        // 找到系统配置文件
+        std::string system_file = InputManager::find_system_file();
+        if (system_file.empty()) {
+            std::cerr << "Failed to obtain a valid system.toml file path." << '\n';
+        }
+
         // 示例：解析TOML文件
         const mbss::InputManager input_manager(system_file);
 
@@ -69,6 +76,6 @@ namespace mbss {
             std::cout << "\n";
         }
     }
-}
+}  // namespace mbss
 
 #endif //INPUT_TEST_HPP

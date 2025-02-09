@@ -8,11 +8,14 @@
 
 
 // #include <map>
+#include <eigen3/Eigen/Dense>
+#include <filesystem>
 #include <iostream>
 #include <string>
-#include <vector>
-#include <eigen3/Eigen/Dense>
 #include <toml.hpp>
+#include <vector>
+
+namespace fs = std::filesystem;
 
 namespace mbss {
     // 定义存储仿真配置的结构体
@@ -58,6 +61,42 @@ namespace mbss {
 
         // 获取约束配置
         [[nodiscard]] const std::vector<JointConfig>& getConstraintsConfig() const { return constraints_config_; }
+
+        // 寻找system.toml文件路径
+        static std::string find_system_file() {
+            // 当前路径下的system.toml
+            fs::path current_path = fs::current_path();
+            fs::path current_file_path = current_path / "system.toml";
+
+            // 检查当前路径下是否存在system.toml
+            if (fs::exists(current_file_path)) {
+                std::cout << "Found system.toml in current directory." << '\n';
+                return current_file_path.string();
+            }
+
+            // 上一路径下的system.toml
+            fs::path parent_path = current_path.parent_path();
+            fs::path parent_file_path = parent_path / "system.toml";
+
+            // 检查上一路径下是否存在system.toml
+            if (fs::exists(parent_file_path)) {
+                std::cout << "Found system.toml in parent directory." << '\n';
+                return parent_file_path.string();
+            }
+
+            // 如果都没有找到，提示用户手动输入文件路径
+            std::cout << "system.toml not found in current or parent directory. Please enter the file path manually:" << '\n';
+            std::string manual_path;
+            std::cin >> manual_path;
+
+            // 检查用户输入的路径是否存在
+            if (!fs::exists(manual_path)) {
+                std::cerr << "The provided file path does not exist." << '\n';
+                return ""; // 返回空字符串表示失败
+            }
+
+            return manual_path;
+        }
 
     private:
         SimulationConfig simulation_config_;
@@ -123,7 +162,7 @@ namespace mbss {
             }
         }
     };
-}
+}  // namespace mbss
 
 
 #endif //INPUT_HPP

@@ -3,10 +3,9 @@
 // #include "input.hpp"
 #include "test/input_test.hpp"
 
-
 int main() {
-  std::string system_file = "/home/kopfhanger/cpp_code/mbss/system.toml";
-  mbss::test_input(system_file);
+    // 调用你的 mbss::test_input 函数
+    mbss::test_input();
 
-  return 0;
+    return 0;
 }

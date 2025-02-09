@@ -30,8 +30,7 @@ public:
     using value_type = T;
 
 /* Constructors */
-    DualQuaternion()
-    {}
+    DualQuaternion() = default;
 
     DualQuaternion(
         const Quaternion<T>& real,
