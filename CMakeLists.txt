@@ -3,10 +3,12 @@ project(mbss)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(mbss main.cpp
-        input.hpp
-        Constraint.hpp
-        output.hpp
-        RigidBody.hpp
-        test/input_test.hpp
-)
+add_compile_options(-std=c++23 -Wall -O2)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+aux_source_directory(./src SRC_LIST)
+
+include_directories(./inc)
+
+add_executable(mbss src/main.cpp)
