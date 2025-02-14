@@ -21,6 +21,6 @@ public:
     virtual void applyConstraint() = 0;
 };
 
-} // mbss
+}  // namespace mbss
 
 #endif //CONSTRAINT_HPP
