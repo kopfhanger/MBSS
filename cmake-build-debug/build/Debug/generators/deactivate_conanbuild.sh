@@ -1,1 +1,0 @@
-. "/home/kopfhanger/cpp_pro/mbss/cmake-build-debug/build/Debug/generators/deactivate_conanbuildenv-debug-x86_64.sh"
