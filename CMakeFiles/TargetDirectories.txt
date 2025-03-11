@@ -1,3 +1,0 @@
-/home/kopfhanger/cpp_code/mbss/CMakeFiles/mbss.dir
-/home/kopfhanger/cpp_code/mbss/CMakeFiles/edit_cache.dir
-/home/kopfhanger/cpp_code/mbss/CMakeFiles/rebuild_cache.dir

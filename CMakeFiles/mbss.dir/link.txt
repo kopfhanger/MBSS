@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/mbss.dir/link.d CMakeFiles/mbss.dir/src/main.cpp.o -o mbss

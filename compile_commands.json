@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/kopfhanger/cpp_code/mbss",
-  "command": "/usr/bin/c++  -I/home/kopfhanger/cpp_code/mbss/./inc -g -std=gnu++23 -fdiagnostics-color=always -std=c++23 -Wall -O2 -o CMakeFiles/mbss.dir/src/main.cpp.o -c /home/kopfhanger/cpp_code/mbss/src/main.cpp",
-  "file": "/home/kopfhanger/cpp_code/mbss/src/main.cpp",
-  "output": "CMakeFiles/mbss.dir/src/main.cpp.o"
-}
-]

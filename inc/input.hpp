@@ -6,7 +6,7 @@
 #ifndef INPUT_HPP
 #define INPUT_HPP
 
-
+// import std;
 // #include <map>
 #include <eigen3/Eigen/Dense>
 #include <filesystem>
@@ -64,19 +64,30 @@ namespace mbss {
 
         // 寻找system.toml文件路径
         static std::string find_system_file() {
-            // 当前路径和上一路径
+            // 获取当前路径
             fs::path current_path = fs::current_path();
 
-            // 检查当前路径或上一路径下是否存在的 system.toml
-            for (fs::path parent_path = current_path.parent_path(); const auto& path : {current_path, parent_path}) {
-                if (fs::path file_path = path / "system.toml"; exists(file_path)) {
+            // 获取可执行文件的路径（用于开发环境）
+            fs::path binary_path = fs::current_path(); // 当前路径即为可执行文件路径
+
+            // 检查当前路径下是否存在 system.toml（部署环境）
+            fs::path file_path = current_path / "system.toml";
+            if (fs::exists(file_path)) {
+                std::cout << "Found system.toml in " << file_path << '\n';
+                return file_path.string();
+            }
+
+            // 如果当前路径下不存在，从可执行文件路径向上查找（开发环境）
+            for (fs::path parent_path = binary_path; parent_path.has_parent_path(); parent_path = parent_path.parent_path()) {
+                file_path = parent_path / "system.toml";
+                if (fs::exists(file_path)) {
                     std::cout << "Found system.toml in " << file_path << '\n';
                     return file_path.string();
                 }
             }
 
             // 如果都没有找到，提示用户手动输入文件路径
-            std::cout << "system.toml not found in current or parent directory. Please enter the file path manually:" << '\n';
+            std::cout << "system.toml not found in any relevant directories. Please enter the file path manually:" << '\n';
             std::string manual_path;
             std::cin >> manual_path;
 
